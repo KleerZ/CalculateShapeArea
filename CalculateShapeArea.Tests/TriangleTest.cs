@@ -18,10 +18,9 @@ public class TriangleTest
     [Theory]
     [InlineData(12, 5, 7)]
     [InlineData(11.5, 4.2, 6)]
-    public void IsTriangleTest(double a, double b, double c)
+    public void CheckTriangleTest(double a, double b, double c)
     {
-        Triangle = new Triangle(a, b, c);
-        Assert.Throws<ArgumentException>(() => Triangle.CalculateArea());
+        Assert.Throws<ArgumentException>(() => Triangle = new Triangle(a, b, c));
     }
 
     [Theory]
@@ -34,7 +33,7 @@ public class TriangleTest
     }
 
     [Theory]
-    [InlineData(11, 4, 6.6)]
+    [InlineData(11, 4, 8.1)]
     [InlineData(3.8, 7, 5.4)]
     public void IsNotRightTriangleTest(double a, double b, double c)
     {

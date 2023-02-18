@@ -15,15 +15,12 @@ public class Triangle : ITriangle
         A = a;
         B = b;
         C = c;
+        CheckTriangle();
     }
 
     public double CalculateArea()
     {
-        if (IsTriangle() == false)
-            throw new ArgumentException("Triangle with these sides does not exist");
-        
         var p = (A + B + C) / 2;
-
         return Math.Sqrt(p * (p - A) * (p - B) * (p - C));
     }
 
@@ -37,6 +34,9 @@ public class Triangle : ITriangle
         return Math.Abs(legs - Math.Pow(hypotenuse, 2)) < Precision;
     }
 
-    private bool IsTriangle() =>
-        A + B > C && B + C > A && C + A > B;
+    private void CheckTriangle()
+    {
+        if (!(A + B > C && B + C > A && C + A > B))
+            throw new ArgumentException("Triangle with these sides does not exist");
+    }
 }
